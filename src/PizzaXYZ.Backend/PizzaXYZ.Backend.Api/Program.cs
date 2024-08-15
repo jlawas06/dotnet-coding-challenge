@@ -1,3 +1,4 @@
+using PizzaXYZ.Backend.Api.Middlewares;
 using PizzaXYZ.Backend.Application;
 using PizzaXYZ.Backend.Infrastructure;
 
@@ -20,6 +21,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
