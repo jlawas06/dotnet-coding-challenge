@@ -11,6 +11,13 @@ public static class DependencyInjection
             configuration.RegisterServicesFromAssembly(assembly)
         );
 
+        services.AddServices();
+
         return services;
+    }
+
+    private static void AddServices(this IServiceCollection services)
+    {
+        services.AddScoped<IPizzaService, PizzaService>();
     }
 }

@@ -21,7 +21,7 @@ internal class PizzaService(IAppDbContext context, IBulkInsertService<Pizza> bul
 
     public async Task<Pizza> GetPizzaByIdAsync(string id)
     {
-        return await context.Pizzas.FindAsync(id) ?? throw new Exception($"Pizza with id {id} does not exist.");
+        return await context.Pizzas.FindAsync(id) ?? default!;
     }
 
     public async Task<IEnumerable<Pizza>> GetPizzasAsync()

@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PizzaXYZ.Backend.Application\PizzaXYZ.Backend.Application.csproj" />
     <ProjectReference Include="..\PizzaXYZ.Backend.Infrastructure\PizzaXYZ.Backend.Infrastructure.csproj" />
   </ItemGroup>
