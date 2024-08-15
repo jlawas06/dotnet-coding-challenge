@@ -1,5 +1,5 @@
 ﻿namespace PizzaXYZ.Backend.Application.Interfaces;
-public interface IBulkInsertService<T> where T : class
+public interface IBulkInsertService
 {
-    Task BulkInsertAsync(IList<T> entities, string tableName);
+    Task BulkInsertAsync<T>(IList<T> entities, string tableName);
 }

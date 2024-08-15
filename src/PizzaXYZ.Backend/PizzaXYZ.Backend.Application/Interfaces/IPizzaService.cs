@@ -6,5 +6,4 @@ public interface IPizzaService
     Task AddPizzaAsync(Pizza pizza);
     Task UpdatePizzaAsync(Pizza pizza);
     Task DeletePizzaAsync(string id);
-    Task BulkInsertPizzasAsync(IList<Pizza> pizzas);
 }

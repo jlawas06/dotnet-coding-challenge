@@ -1,10 +1,6 @@
 ﻿namespace PizzaXYZ.Backend.Application.Services;
-internal class PizzaService(IAppDbContext context, IBulkInsertService<Pizza> bulkInsertService) : IPizzaService
+internal class PizzaService(IAppDbContext context) : IPizzaService
 {
-    public async Task BulkInsertPizzasAsync(IList<Pizza> pizzas)
-    {
-        await bulkInsertService.BulkInsertAsync(pizzas, "Pizzas");
-    }
 
     public async Task AddPizzaAsync(Pizza pizza)
     {

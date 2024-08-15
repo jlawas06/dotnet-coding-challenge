@@ -5,12 +5,12 @@ public class ImportPizzasCommand : IRequest<Unit>
     public required string FilePath { get; set; }
 }
 
-internal class ImportPizzasCommandHandler(IPizzaService pizzaService) : IRequestHandler<ImportPizzasCommand, Unit>
+internal class ImportPizzasCommandHandler(IBulkInsertService bulkInsertService) : IRequestHandler<ImportPizzasCommand, Unit>
 {
     public async Task<Unit> Handle(ImportPizzasCommand request, CancellationToken cancellationToken)
     {
-        var pizzas = await PizzaDataParserHelper.ParseCsvFileAsync(request.FilePath);
-        await pizzaService.BulkInsertPizzasAsync(pizzas);
+        var pizzas = await PizzaDataParserHelper.ParseCsvFileToPizzaAsync(request.FilePath);
+        await bulkInsertService.BulkInsertAsync(pizzas, "Pizzas");
         return Unit.Value;
     }
 }
