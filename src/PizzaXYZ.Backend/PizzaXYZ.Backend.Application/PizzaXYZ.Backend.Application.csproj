@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQRS\" />
+    <Folder Include="CQRS\Order\" />
     <Folder Include="Dtos\" />
   </ItemGroup>
 
