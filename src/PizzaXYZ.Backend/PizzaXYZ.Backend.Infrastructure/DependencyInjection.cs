@@ -12,6 +12,7 @@ public static class DependencyInjection
                 b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
 
         services.AddScoped<IAppDbContext, AppDbContext>();
+        services.AddScoped(typeof(IBulkInsertService<>), typeof(BulkInsertService<>));
 
         return services;
     }
