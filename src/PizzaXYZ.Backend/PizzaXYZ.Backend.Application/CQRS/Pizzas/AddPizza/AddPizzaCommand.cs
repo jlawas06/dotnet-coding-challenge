@@ -13,29 +13,20 @@ internal class AddPizzaCommandHandler(IPizzaService pizzaService) : IRequestHand
 {
     public async Task<Unit> Handle(AddPizzaCommand request, CancellationToken cancellationToken)
     {
-        try
+
+        var existingPizza = await pizzaService.GetPizzaByIdAsync(request.Id);
+
+        if (existingPizza != null) throw new BadRequestException($"Pizza with {request.Id} already exists");
+
+        var pizza = new Pizza
         {
-            var existingPizza = await pizzaService.GetPizzaByIdAsync(request.Id);
+            Id = request.Id,
+            Size = Enum.Parse<PizzaSize>(request.Size),
+            Price = request.Price,
+            PizzaTypeId = request.PizzaTypeId
+        };
 
-            if (existingPizza != null) throw new BadRequestException($"Pizza with {request.Id} already exists");
-
-            var pizza = new Pizza
-            {
-                Id = request.Id,
-                Size = Enum.Parse<PizzaSize>(request.Size),
-                Price = request.Price,
-                PizzaTypeId = request.PizzaTypeId
-            };
-
-            await pizzaService.AddPizzaAsync(pizza);
-            return Unit.Value;
-        }
-        catch (Exception ex)
-        {
-
-            throw;
-        }
-
-        
+        await pizzaService.AddPizzaAsync(pizza);
+        return Unit.Value;
     }
 }

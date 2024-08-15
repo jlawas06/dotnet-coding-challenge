@@ -3,7 +3,7 @@ internal class PizzaService(IAppDbContext context, IBulkInsertService<Pizza> bul
 {
     public async Task BulkInsertPizzasAsync(IList<Pizza> pizzas)
     {
-        await bulkInsertService.BulkInsertAsync(pizzas, "Pizza");
+        await bulkInsertService.BulkInsertAsync(pizzas, "Pizzas");
     }
 
     public async Task AddPizzaAsync(Pizza pizza)
@@ -14,7 +14,7 @@ internal class PizzaService(IAppDbContext context, IBulkInsertService<Pizza> bul
 
     public async Task DeletePizzaAsync(string id)
     {
-        var pizza = await context.Pizzas.FindAsync(id) ?? throw new Exception($"Pizza with id {id} does not exist.");
+        var pizza = await context.Pizzas.FindAsync(id) ?? throw new NotFoundException($"Pizza with id {id} does not exist.");
         context.Pizzas.Remove(pizza);
         await context.SaveChangesAsync();
     }
