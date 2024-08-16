@@ -18,8 +18,4 @@
     <ProjectReference Include="..\PizzaXYZ.Backend.Domain\PizzaXYZ.Backend.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CQRS\Order\ImportOrderDetails\" />
-  </ItemGroup>
-
 </Project>

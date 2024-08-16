@@ -1,7 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Data;
-using System.Reflection;
 
 namespace PizzaXYZ.Backend.Infrastructure.Services;
 internal class BulkInsertService(AppDbContext context) : IBulkInsertService
@@ -29,7 +28,7 @@ internal class BulkInsertService(AppDbContext context) : IBulkInsertService
 
             await transaction.CommitAsync();
         }
-        catch(Exception ex)
+        catch
         {
             await transaction.RollbackAsync();
             throw;
