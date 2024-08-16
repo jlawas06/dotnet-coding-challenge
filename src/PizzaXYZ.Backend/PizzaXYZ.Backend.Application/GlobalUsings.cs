@@ -7,3 +7,4 @@ global using PizzaXYZ.Backend.Application.Dtos;
 global using PizzaXYZ.Backend.Application.Constants;
 global using Microsoft.EntityFrameworkCore;
 global using MediatR;
+global using AutoMapper;
