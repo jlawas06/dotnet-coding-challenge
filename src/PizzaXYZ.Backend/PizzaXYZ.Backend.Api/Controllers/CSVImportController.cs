@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PizzaXYZ.Backend.Application.CQRS.Order.ImportOrders;
 using PizzaXYZ.Backend.Application.CQRS.Pizzas.ImportPizzas;
 using PizzaXYZ.Backend.Application.CQRS.Pizzas.ImportPizzaTypes;
 using PizzaXYZ.Backend.Application.Exceptions;
@@ -31,6 +32,15 @@ public class CSVImportController : ControllerBase
     {
         var filePath = await ValidateAndGetFilePath(file);
         await _mediator.Send(new ImportPizzaTypesCommand { FilePath = filePath });
+        return Ok();
+    }
+
+    [HttpPost]
+    [Route("upload-orders")]
+    public async Task<IActionResult> ImportOrders([FromForm] IFormFile file)
+    {
+        var filePath = await ValidateAndGetFilePath(file);
+        await _mediator.Send(new ImportOrdersCommand { FilePath = filePath });
         return Ok();
     }
 
