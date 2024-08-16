@@ -21,7 +21,7 @@ internal class ImportPizzaTypesCommandHandler(IBulkInsertService bulkInsertServi
         using var csv = new CsvReader(reader, config);
         var records = csv.GetRecords<PizzaTypeDto>().ToList();
         var pizzaTypes = records.ToDomainList();
-        await bulkInsertService.BulkInsertAsync(pizzaTypes, "PizzaTypes");
+        await bulkInsertService.BulkInsertAsync(pizzaTypes, TableNamesConstants.PizzaTypes);
         return Unit.Value;
 
     }

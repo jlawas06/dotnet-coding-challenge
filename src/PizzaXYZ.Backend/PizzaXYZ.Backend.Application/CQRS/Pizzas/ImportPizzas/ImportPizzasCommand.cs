@@ -10,7 +10,7 @@ internal class ImportPizzasCommandHandler(IBulkInsertService bulkInsertService) 
     public async Task<Unit> Handle(ImportPizzasCommand request, CancellationToken cancellationToken)
     {
         var pizzas = await PizzaDataParserHelper.ParseCsvFileToPizzaAsync(request.FilePath);
-        await bulkInsertService.BulkInsertAsync(pizzas, "Pizzas");
+        await bulkInsertService.BulkInsertAsync(pizzas, TableNamesConstants.Pizzas);
         return Unit.Value;
     }
 }
